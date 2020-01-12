@@ -39,7 +39,7 @@ public class BackendQualityModelApplication implements CommandLineRunner {
 		mapTestToto.put("page", "corbeille");
 		mapTestToto.put("action","cliquer");
 		mapTestToto.put("data", "06TOTO");
-		Instruction instructionTestToto = new Instruction("IHM","1",mapTestToto);
+		Instruction instructionTestToto = new Instruction("IHM","2",mapTestToto);
 		
 		List<Instruction> instructionsTest  = new ArrayList<>();
 		instructionsTest.add(instructionTestTiti);
@@ -48,12 +48,36 @@ public class BackendQualityModelApplication implements CommandLineRunner {
 		Map<String,String> qualityHeaderTest = new HashMap<>();
 		qualityHeaderTest.put("nom","test01");
 		qualityHeaderTest.put("description","cas de test 01");
-		qualityHeaderTest.put("casMetier","je sais pas");
-		qualityHeaderTest.put("typeInjection","MQ ou WS");
+		qualityHeaderTest.put("casMetier","SFTTH");
+		qualityHeaderTest.put("typeInjection","WS");
 		
 		QualityModele qualityModeleTest = new QualityModele("CAS001",qualityHeaderTest,instructionsTest);
 		
 		repository.save(qualityModeleTest);
+		
+		Map<String,String> mapTestTutu  = new HashMap<>();
+		mapTestTutu.put("nomProcess", "CompletudeCommande");
+		mapTestTutu.put("executer", "true");
+		Instruction instructionTestTutu = new Instruction("PROCESS","3",mapTestTutu);
+		
+		Map<String,String> mapTestTata  = new HashMap<>();
+		mapTestTata.put("nomProcess", "CompletudeInterferance");
+		mapTestTutu.put("executer", "false");
+		Instruction instructionTestTata = new Instruction("PROCESS","4",mapTestTata);
+		
+		List<Instruction> instructionsTest2  = new ArrayList<>();
+		instructionsTest2.add(instructionTestTutu);
+		instructionsTest2.add(instructionTestTata);
+		
+		Map<String,String> qualityHeaderTest2 = new HashMap<>();
+		qualityHeaderTest2.put("nom","test02");
+		qualityHeaderTest2.put("description","cas de test 02");
+		qualityHeaderTest2.put("casMetier","VFTTH");
+		qualityHeaderTest2.put("typeInjection","MQ");
+		
+		QualityModele qualityModeleTest2 = new QualityModele("CAS002",qualityHeaderTest2,instructionsTest2);
+		
+		repository.save(qualityModeleTest2);
 		
 		System.out.println("qualityModele found with findAll()");
 		System.out.println("-------------------------------");
